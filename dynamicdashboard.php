@@ -10,7 +10,7 @@ if(isset($_SESSION['userid'])) {
     //       c1b6c6c5-7d47-11ee-91de-f04da25d1f3d
 }
  
-$dataPoints = array( 
+/*$dataPoints = array( 
 	array("y" => 500, "label" => "January" ),
 	array("y" => 560, "label" => "February" ),
 	array("y" => 490, "label" => "March" ),
@@ -23,7 +23,7 @@ $dataPoints = array(
     array("y" => 700, "label" => "October" ),
     array("y" => 750, "label" => "November" ),
     array("y" => 850, "label" => "December" )
-);
+); */
  
 ?>
 <!DOCTYPE html>
@@ -138,9 +138,7 @@ h2 {
         #chartContainer {
             margin-top : 20px;
         }
-        #chartContainer {
-            margin-top : 20px;
-        }
+        
 #filterStats {
     margin-top : 20px;
 }
@@ -156,14 +154,23 @@ h2 {
 #indrstname {
     margin-top : 30px;
 }
-
-	</style>
-    <script src=”https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js”>   </script>	
+#stackedChartID {
+    display: none;
+}
+#orderstackedChartID {
+    display: none;
+}
+	</style>	
 	<!--<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>-->
     <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.20.0/js/mdb.min.js"></script>-->
+    <script src= 
+"https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"> 
+    </script> 
+    <script src= 
+"https://cdn.jsdelivr.net/npm/chart.js@4.0.1/dist/chart.umd.min.js"> 
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-    <script src=”https://cdn.jsdelivr.net/npm/chart.js@4.0.1/dist/chart.umd.min.js”>   </script> 
     <script type="text/javascript">
         $(document).ready( function() {
             var html = '';
@@ -181,6 +188,7 @@ h2 {
             var individualRstName = '';
             var indrstcalls = '';
             var indrstvalue = '';
+            
 
             $.ajax({
                 url: "getownertotalrestaurants.php",
@@ -386,7 +394,6 @@ h2 {
 
                     $('#card9').show();
                     $('#card10').show();
-                    
                 }
                });
 
@@ -400,7 +407,7 @@ h2 {
                 $("#strtDash").hide();
                 $("#strtDash1").hide();
                 $('#uploadData').hide();
-                $('#chartContainer').hide();
+                //$('#chartContainer').hide();
                 $('#tblHdg').html('Customers Details');
                 $('#tblAdd').html('<i class="fa fa-plus"></i> Add New Customers');
                 $('#tblAdd').show();
@@ -469,7 +476,7 @@ h2 {
                 $("#strtDash").hide();
                 $("#strtDash1").hide();
                 $('#uploadData').hide();
-                $('#chartContainer').hide();
+               //$('#chartContainer').hide();
                 $('#tblHdg').html('Customers Details By Area');
                 $('#tblAdd').html('');
                 $('#tblAdd').hide();
@@ -558,7 +565,7 @@ h2 {
                 $("#strtDash").hide();
                 $("#strtDash1").hide();
                 $('#uploadData').hide();
-                $('#chartContainer').hide();
+                //$('#chartContainer').hide();
                 $('#tblHdg').html('Customer Details');
                 $('#tblAdd').html('<i class="fa fa-plus"></i> Add New Customers');
                 $('#tblAdd').show();
@@ -590,7 +597,7 @@ h2 {
                 $("#strtDash").hide();
                 $("#strtDash1").hide();
                 $('#uploadData').hide();
-                $('#chartContainer').hide();
+                //$('#chartContainer').hide();
                 $('#tblHdg').html('Customer Details By Area');
                 $('#tblAdd').html('');
                 $('#tblAdd').hide();
@@ -622,7 +629,7 @@ h2 {
                 $("#strtDash").hide();
                 $("#strtDash1").hide();
                 $("#viewTableData").hide();
-                $('#chartContainer').hide();
+                //$('#chartContainer').hide();
                 $('#uploadData').show();
             });
 
@@ -630,7 +637,7 @@ h2 {
                 $("#strtDash").hide();
                 $("#strtDash1").hide();
                 $("#viewTableData").hide();
-                $('#chartContainer').hide();
+                //$('#chartContainer').hide();
                 $('#uploadData').show();
             });
 
@@ -638,11 +645,16 @@ h2 {
                 $("#strtDash").hide();
                 $("#strtDash1").hide();
                 $("#viewTableData").hide();
-                $('#chartContainer').hide();
+                //$('#chartContainer').hide();
                 $('#uploadData').show();
             });
 
-            $('#card1').click(function() {
+            $(document).on("click", "#dailycalls", function(){
+
+                
+            });    
+
+            /*$('#card1').click(function() {
                 var chart = new CanvasJS.Chart("chartContainer", {
                     animationEnabled: true,
                     theme: "light2",
@@ -655,11 +667,11 @@ h2 {
                     data: [{
                         type: "column",
                         yValueFormatString: "#,##0.## tonnes",
-                        dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
+                        dataPoints: <?php //echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
                     }]
                 });
                 chart.render();
-            });
+            }); */
         });
     </script>
 </head>
@@ -901,9 +913,22 @@ h2 {
                             
                         </div>
                     </div>
-
+                    
+                </div>
+                <div id="filterStats">
+                    <div class="row">
+                        <h5>Filters For Restaurant Wise Statistics For New And Repeated Customers</h5>
+                    </div>
+                    <button type="button" class="btn btn-primary" id="dailycalls">Daily Calls</button>
+                    <button type="button" class="btn btn-primary" id="dailyorders">Daily Order Value</button>
                 </div>
                 
+                <div> 
+                    <canvas id="stackedChartID"></canvas> 
+                </div>
+                <div> 
+                    <canvas id="orderstackedChartID"></canvas> 
+                </div>
 
 
                 <!-- -->
@@ -959,13 +984,83 @@ h2 {
             <!--</div>-->
             
         </div>
-        
-        
-        <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+        <!--<div id="chartContainer" style="height: 370px; width: 100%;"></div>-->
     </div>
 </div>
 
-<script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+<!--<script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>-->
 <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>-->
+<script> 
+        // Get the drawing context on the canvas 
+        var callDates = ["27-11-2023", "28-11-2023", "29-11-2023", "30-11-2023", "01-12-2023"];
+                var newCalls = [5,8,6,10,15];
+                var repeatCalls = [20,14,10,8,18];
+                var myContext = document.getElementById( 
+                    "stackedChartID").getContext('2d'); 
+                    
+                var myChart = new Chart(myContext, { 
+                    type: 'bar', 
+                    data: { 
+                        labels: callDates, 
+                        datasets: [{ 
+                            label: 'New Calls', 
+                            backgroundColor: "blue", 
+                            data: newCalls, 
+                        }, { 
+                            label: 'Repeat Calls', 
+                            backgroundColor: "green", 
+                            data: repeatCalls, 
+                        } 
+                    ], 
+                    }, 
+                    options: { 
+                        //indexAxis: 'y', 
+                        scales: { 
+                            x: { 
+                                stacked: true, 
+                            }, 
+                            y: { 
+                                stacked: true 
+                            } 
+                        }, 
+                        responsive: true 
+                    } 
+                }); 
+
+                var orderDates = ["27-11-2023", "28-11-2023", "29-11-2023", "30-11-2023", "01-12-2023"];
+                var newOrders = [580,650,775,1000,550];
+                var repeatOrders = [350,400,1000,800,750];
+                var myContext = document.getElementById( 
+                    "orderstackedChartID").getContext('2d'); 
+                    
+                var myChart1 = new Chart(myContext, { 
+                    type: 'bar', 
+                    data: { 
+                        labels: orderDates, 
+                        datasets: [{ 
+                            label: 'New Orders', 
+                            backgroundColor: "Orange", 
+                            data: newOrders, 
+                        }, { 
+                            label: 'Repeat Orders', 
+                            backgroundColor: "red", 
+                            data: repeatOrders, 
+                        } 
+                    ], 
+                    }, 
+                    options: { 
+                        //indexAxis: 'y', 
+                        scales: { 
+                            x: { 
+                                stacked: true, 
+                            }, 
+                            y: { 
+                                stacked: true 
+                            } 
+                        }, 
+                        responsive: true 
+                    } 
+                });
+    </script> 
 </body>
 </html>
