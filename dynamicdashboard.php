@@ -141,9 +141,9 @@ h2 {
         #chartContainer {
             margin-top : 20px;
         }
-/*#filterStats {
+#filterStats {
     margin-top : 20px;
-}*/
+}
 #mnthly {
     margin-top : 30px;
 }
@@ -156,11 +156,14 @@ h2 {
 #indrstname {
     margin-top : 30px;
 }
-	</style>	
-	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+	</style>
+    <script src=”https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js”>   </script>	
+	<!--<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>-->
     <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.20.0/js/mdb.min.js"></script>-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script src=”https://cdn.jsdelivr.net/npm/chart.js@4.0.1/dist/chart.umd.min.js”>   </script> 
     <script type="text/javascript">
         $(document).ready( function() {
             var html = '';
@@ -383,6 +386,7 @@ h2 {
 
                     $('#card9').show();
                     $('#card10').show();
+                    
                 }
                });
 
@@ -897,8 +901,9 @@ h2 {
                             
                         </div>
                     </div>
-                </div>
 
+                </div>
+                
 
 
                 <!-- -->
@@ -954,6 +959,8 @@ h2 {
             <!--</div>-->
             
         </div>
+        
+        
         <div id="chartContainer" style="height: 370px; width: 100%;"></div>
     </div>
 </div>
