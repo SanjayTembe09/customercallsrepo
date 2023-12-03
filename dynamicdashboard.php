@@ -383,7 +383,7 @@ h2 {
 
                     $('#indrstname').html('<h4>' + individualRstName + '</h4>');
                     $('#indttlcalls').html('Total Calls : ' + indrstcalls);
-                    $('#indttlvalue').html('Total Order Value : ' + indrstvalue);
+                    $('#indttlvalue').html('Total Order Value : Rs. ' + indrstvalue);
 
                     $('#card9').show();
                     $('#card10').show();
@@ -448,7 +448,7 @@ h2 {
                 });
 
                 $.ajax({
-                url: "getindrstmonthlyrepeatvalue.php",
+                url: "getindrstmonthlyrepeatordervalue.php",
                 data: {'ownerid' : ownerid, 'restid' : individualRstId},
                 //method="post",
                     success:function(response) {
